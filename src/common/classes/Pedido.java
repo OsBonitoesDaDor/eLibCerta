@@ -12,4 +12,9 @@ public class Pedido implements  Serializable{
 	}
 	
 	
+	@Override
+	public String toString(){
+		System.out.println(String.format(""), args));
+	}
+	
 }

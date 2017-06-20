@@ -20,6 +20,11 @@ public class Usuario implements IUser, Serializable{
 		this.id = id;
 		carrinho = new ArrayList<Livro>();
 	}
+	
+
+	public void limpaCarrinho() {
+		carrinho = new ArrayList<Livro>();
+	}
 
 
 	@Override
@@ -109,4 +114,6 @@ public class Usuario implements IUser, Serializable{
 		return "ID: " + id + " => " + "Nome: " + this.nome + "\tEmail: " + this.email + "\tStatus: "
 				+ (this instanceof IAdmin ? " Administrador" : " Cliente");
 	}
+
+
 }

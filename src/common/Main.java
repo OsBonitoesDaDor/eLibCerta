@@ -70,7 +70,7 @@ public class Main {
 		}
 		
 		System.out.println("Bem vindo, " + user.getNome());
-		Loja l = new Loja(user);
+		Loja l = new Loja(users, user);
 		l.drawMenu();
 	}
 }

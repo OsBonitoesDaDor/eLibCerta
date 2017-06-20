@@ -5,18 +5,22 @@ import java.util.ArrayList;
 import common.interfaces.IAdmin;
 import common.listas.ListaLivros;
 import common.listas.ListaPedidos;
+import common.listas.ListaUsuarios;
 import external.Menu;
 
 public class Loja {
 	
 	private Usuario user;
 	private ListaLivros livros = new ListaLivros();
-	private ListaPedidos pedidos;
+	private ListaPedidos pedidos = new ListaPedidos();
+	private ListaUsuarios listaUsuarios;
 	
-	public Loja(Usuario user){
-		this.user = user;
-		teste();
+	public Loja(ListaUsuarios lista, Usuario usuario) {
+		super();
+		this.user = usuario;
+		this.listaUsuarios = lista;
 	}
+
 	
 	public void drawMenu(){ArrayList<String> opcoesArray = new ArrayList<String>();
 	opcoesArray.add("1");
@@ -67,10 +71,28 @@ public class Loja {
 			break;
 		case 5:
 			pedidos.addPedido(user.fechaPedido());
+			user.limpaCarrinho();
 			break;
 		case 6:
 			if(user instanceof IAdmin)
-				((IAdmin) user).
+				((IAdmin) user).criaLivro(livros);
+			break;
+		case 7: 
+			if(user instanceof IAdmin)
+				((IAdmin) user).delLivro(livros);
+			break;
+		case 8:
+			if(user instanceof IAdmin)
+				((IAdmin) user).listaLivros(livros);
+			break;
+		case 9:
+			if(user instanceof IAdmin)
+				((IAdmin) user).listaPedidos(pedidos);
+			break;
+		case 10:
+			if(user instanceof IAdmin)
+				((IAdmin) user).listaClientes(listaUsuarios);
+			break;			
 		}
 	}while(true);
 
