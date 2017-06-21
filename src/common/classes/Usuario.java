@@ -2,6 +2,7 @@ package common.classes;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import common.interfaces.IAdmin;
@@ -12,6 +13,7 @@ public class Usuario implements IUser, Serializable{
 	private String nome, email, senha;
 	private int id;
 	private ArrayList<Livro> carrinho;
+	
 	public Usuario(String nome, String email, int id, String senha) {
 		super();
 		this.nome = nome;
@@ -93,7 +95,11 @@ public class Usuario implements IUser, Serializable{
 
 	@Override
 	public Pedido fechaPedido() {
-		return new Pedido(this, carrinho);
+		if(carrinho.isEmpty()){
+			System.out.println("Carrinho vazio :(");
+			return null;
+		}
+		return new Pedido(this, carrinho, new GregorianCalendar());
 	}
 	
 	public String getNome() {

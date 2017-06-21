@@ -70,7 +70,7 @@ public class Loja {
 			user.delLivro();
 			break;
 		case 5:
-			pedidos.addPedido(user.fechaPedido());
+			pedidos.addPedido(user.fechaPedido() == null ? user.fechaPedido() : null);
 			user.limpaCarrinho();
 			break;
 		case 6:
